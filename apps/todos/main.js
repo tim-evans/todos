@@ -22,7 +22,7 @@ Todos.main = function main() {
   // Step 2. Set the content property on your primary controller.
   // This will make your app come alive!
   Todos.todoController.set('content',
-    Todos.store.find(SC.Query.local(Todos.Todo)));
+    Todos.store.find(SC.Query.local(Todos.Todo, { orderBy: 'timestamp DESC' })));
 
   Todos.completedTodosController.set('content',
     Todos.store.find(SC.Query.local(Todos.Todo, 'isCompleted = true')));
