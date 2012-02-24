@@ -45,11 +45,11 @@ Todos.mainPage = SC.Page.design({
 
       childViews: ['clearCompletedTodos'],
       clearCompletedTodos: SC.ButtonView.design(SC.AutoResize, {
+        controlSize: SC.HUGE_CONTROL_SIZE,
         layout: { left: 14, height: 30, centerY: 0 },
         isEnabledBinding: SC.Binding.oneWay('Todos.completedTodosController.length').bool(),
-        controlSize: SC.HUGE_CONTROL_SIZE,
         title: 'Clear completed todos',
-        targetBinding: SC.Binding.oneWay('Todos.completedTodosController'),
+        target: 'Todos.completedTodosController',
         action: 'clearCompletedTodos'
       })
     })
