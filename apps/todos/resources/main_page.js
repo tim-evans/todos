@@ -23,6 +23,7 @@ Todos.mainPage = SC.Page.design({
     todosList: SC.ListView.design({
       layout: { centerX: 0, width: 400, top: 30, bottom: 0 },
       contentBinding: SC.Binding.oneWay('Todos.todoController'),
+      rowHeight: 36,
       exampleView: Todos.TodoItemView
     })
   })

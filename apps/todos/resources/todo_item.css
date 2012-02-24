@@ -1,0 +1,18 @@
+$theme.todo-item {
+  .button {
+    left: 13px;
+    top: 50%;
+    margin-top: -8px;
+  }
+
+  .label {
+    left: 47px;
+    line-height: 36px;
+  }
+
+  &.sel {
+    background-color: white;
+    color: #AAA;
+    text-decoration: line-through;
+  }
+}
