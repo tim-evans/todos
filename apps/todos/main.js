@@ -27,6 +27,9 @@ Todos.main = function main() {
   Todos.completedTodosController.set('content',
     Todos.store.find(SC.Query.local(Todos.Todo, 'isCompleted = true')));
 
+  // Focus the new todos item
+  Todos.mainPage.getPath('mainPane.newTodoField.field').becomeFirstResponder();
+
 } ;
 
 function main() { Todos.main(); }
