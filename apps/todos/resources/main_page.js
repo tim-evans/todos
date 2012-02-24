@@ -27,7 +27,14 @@ Todos.mainPage = SC.Page.design({
 
       title: SC.LabelView.design({
         layout: { left: 0, right: 0, top: 0, bottom: 0 },
-        value: 'Todos'
+
+        totalTodoBinding: SC.Binding.oneWay('Todos.todoController.length'),
+        completedTodosBinding: SC.Binding.oneWay('Todos.completedTodosController.length'),
+
+        value: function () {
+          var leftTodo = this.get('totalTodo') - this.get('completedTodos');
+          return 'Todos (%@)'.fmt(leftTodo);
+        }.property('totalTodo', 'completedTodos').cacheable()
       })
     }),
 
