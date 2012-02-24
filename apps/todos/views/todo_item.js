@@ -4,7 +4,7 @@ Todos.TodoItemView = SC.View.extend({
 
   // The label of the todo item
   todo: SC.LabelView.design({
-    contentBinding: SC.Binding.oneWay('.parentView.content'),
+    valueBinding: SC.Binding.oneWay('.parentView.content.title'),
     layout: { left: 47 }
   }),
 
