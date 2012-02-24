@@ -1,0 +1,22 @@
+$theme.toolbar {
+  .checkbox {
+    .button {
+      left: 13px;
+      top: 50%;
+      margin-top: -8px;
+    }
+
+    .label {
+      left: 47px;
+      line-height: 36px;
+    }
+  }
+
+  .sc-label-view {
+    text-align: right;
+    line-height: 36px;
+    font-weight: bold;
+    font-size: 18px;
+    padding-right: 12px;
+  }
+}
