@@ -32,6 +32,7 @@ Todos.mainPage = SC.Page.design({
     }),
 
     newTodoField: SC.View.design({
+      classNames: ['new-todo'],
       layout: { centerX: 0, width: 500, top: 36, height: 36 },
       childViews: ['field', 'submit'],
 
@@ -42,7 +43,7 @@ Todos.mainPage = SC.Page.design({
 
       submit: SC.ButtonView.design(SC.AutoResize, {
         controlSize: SC.HUGE_CONTROL_SIZE,
-        layout: { right: 2, height: 30, centerY: 0, zIndex: 100 },
+        layout: { right: 12, height: 30, centerY: 0, zIndex: 100 },
         title: 'Add',
         target: 'Todos.todoController',
         action: 'addTodo',

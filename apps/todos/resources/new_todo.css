@@ -1,0 +1,12 @@
+$theme.new-todo {
+  background-color: #FFF;
+}
+
+$theme.sc-text-field-view {
+  background-color: transparent;
+  outline: none;
+
+  .padding {
+    left: 14px;
+  }
+}
