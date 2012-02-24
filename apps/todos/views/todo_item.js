@@ -1,17 +1,9 @@
-Todos.TodoItemView = SC.View.extend({
+Todos.TodoItemView = SC.CheckboxView.design({
+  // The CSS class names to apply to this view
+  classNames: ['todo-item'],
 
-  childViews: ['todo', 'checkbox'],
+  valueBinding: '.content.isCompleted',
 
-  // The label of the todo item
-  todo: SC.LabelView.design({
-    valueBinding: SC.Binding.oneWay('.parentView.content.title'),
-    layout: { left: 47 }
-  }),
-
-  // The checkbox that shows whether this todo item is complete
-  checkbox: SC.CheckboxView.design({
-    layout: { zIndex: 2 },
-    valueBinding: '.parentView.content.isCompleted'
-  })
+  titleBinding: SC.Binding.oneWay('.content.title')
 
 });
