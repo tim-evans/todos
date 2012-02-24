@@ -4,7 +4,7 @@ $theme.new-todo {
 
 $theme.sc-text-field-view {
   background-color: transparent;
-  outline: none;
+  font-size: 14px;
 
   .padding {
     left: 14px;

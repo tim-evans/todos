@@ -46,8 +46,7 @@ Todos.mainPage = SC.Page.design({
 
       field: SC.TextFieldView.design({
         localize: YES,
-        hint: '_What needs to be done?',
-        shouldRenderBorder: NO
+        hint: '_What needs to be done?'
       }),
 
       submit: SC.ButtonView.design(SC.AutoResize, {
