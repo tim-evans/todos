@@ -12,7 +12,7 @@ Todos.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    childViews: ['header', 'todosList'],
+    childViews: ['header', 'todosList', 'footer'],
 
     header: SC.ToolbarView.design({
       layout: { centerX: 0, width: 500, top: 0, height: 36 },
@@ -32,11 +32,25 @@ Todos.mainPage = SC.Page.design({
     }),
     
     todosList: SC.ScrollView.design({
-      layout: { centerX: 0, width: 500, top: 36, bottom: 0 },
+      layout: { centerX: 0, width: 500, top: 36, bottom: 36 },
       contentView: SC.ListView.design({
         contentBinding: SC.Binding.oneWay('Todos.todoController'),
         rowHeight: 36,
         exampleView: Todos.TodoItemView
+      })
+    }),
+
+    footer: SC.ToolbarView.design({
+      layout: { centerX: 0, width: 500, bottom: 0, height: 36 },
+
+      childViews: ['clearCompletedTodos'],
+      clearCompletedTodos: SC.ButtonView.design(SC.AutoResize, {
+        layout: { left: 14, height: 30, centerY: 0 },
+        isEnabledBinding: SC.Binding.oneWay('Todos.completedTodosController.length').bool(),
+        controlSize: SC.HUGE_CONTROL_SIZE,
+        title: 'Clear completed todos',
+        targetBinding: SC.Binding.oneWay('Todos.completedTodosController'),
+        action: 'clearCompletedTodos'
       })
     })
   })

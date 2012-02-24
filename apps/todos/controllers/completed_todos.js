@@ -12,6 +12,11 @@ Todos.completedTodosController = SC.ArrayController.create({
       Todos.todoController.setEach('isCompleted', v);
     }
     return this.get('length') === this.get('totalTodos');
-  }.property('length', 'totalTodos').cacheable()
+  }.property('length', 'totalTodos').cacheable(),
+
+  // Destroys all todo items that are completed
+  clearCompletedTodos: function () {
+    this.invoke('destroy');
+  }
 
 });
