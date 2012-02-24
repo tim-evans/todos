@@ -2,7 +2,8 @@ require('models/todo');
 
 Todos.Todo.FIXTURES = [
  {
-   isCompleted: NO,
+   guid: 0,
+   isCompleted: YES,
    title: 'Finish Todo app'
  }
 ];
