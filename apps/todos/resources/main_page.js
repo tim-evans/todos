@@ -21,7 +21,8 @@ Todos.mainPage = SC.Page.design({
 
       completeAll: SC.CheckboxView.design(SC.AutoResize, {
         autoResizePadding: { width: 47 },
-        title: 'Mark All as done',
+        localize: YES,
+        title: '_Mark all as done',
         valueBinding: 'Todos.completedTodosController.areAllCompleted'
       }),
 
@@ -33,7 +34,7 @@ Todos.mainPage = SC.Page.design({
 
         value: function () {
           var leftTodo = this.get('totalTodo') - this.get('completedTodos');
-          return 'Todos (%@)'.fmt(leftTodo);
+          return 'Todos (%@)'.loc(leftTodo);
         }.property('totalTodo', 'completedTodos').cacheable()
       })
     }),
@@ -44,14 +45,16 @@ Todos.mainPage = SC.Page.design({
       childViews: ['field', 'submit'],
 
       field: SC.TextFieldView.design({
-        hint: 'What needs to be done?',
+        localize: YES,
+        hint: '_What needs to be done?',
         shouldRenderBorder: NO
       }),
 
       submit: SC.ButtonView.design(SC.AutoResize, {
         controlSize: SC.HUGE_CONTROL_SIZE,
         layout: { right: 12, height: 30, centerY: 0, zIndex: 100 },
-        title: 'Add',
+        localize: YES,
+        title: '_Add',
         target: 'Todos.todoController',
         action: 'addTodo',
         valueBinding: '.parentView.field.value',
@@ -76,7 +79,8 @@ Todos.mainPage = SC.Page.design({
         controlSize: SC.HUGE_CONTROL_SIZE,
         layout: { left: 14, height: 30, centerY: 0 },
         isEnabledBinding: SC.Binding.oneWay('Todos.completedTodosController.length').bool(),
-        title: 'Clear completed todos',
+        localize: YES,
+        title: '_Clear completed todos',
         target: 'Todos.completedTodosController',
         action: 'clearCompletedTodos'
       })
