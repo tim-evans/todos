@@ -31,11 +31,13 @@ Todos.mainPage = SC.Page.design({
       })
     }),
     
-    todosList: SC.ListView.design({
+    todosList: SC.ScrollView.design({
       layout: { centerX: 0, width: 500, top: 36, bottom: 0 },
-      contentBinding: SC.Binding.oneWay('Todos.todoController'),
-      rowHeight: 36,
-      exampleView: Todos.TodoItemView
+      contentView: SC.ListView.design({
+        contentBinding: SC.Binding.oneWay('Todos.todoController'),
+        rowHeight: 36,
+        exampleView: Todos.TodoItemView
+      })
     })
   })
 
