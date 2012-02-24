@@ -12,7 +12,7 @@ Todos.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    childViews: ['header', 'todosList', 'footer'],
+    childViews: ['header', 'newTodoField', 'todosList', 'footer'],
 
     header: SC.ToolbarView.design({
       layout: { centerX: 0, width: 500, top: 0, height: 36 },
@@ -30,9 +30,29 @@ Todos.mainPage = SC.Page.design({
         value: 'Todos'
       })
     }),
+
+    newTodoField: SC.View.design({
+      layout: { centerX: 0, width: 500, top: 36, height: 36 },
+      childViews: ['field', 'submit'],
+
+      field: SC.TextFieldView.design({
+        hint: 'What needs to be done?',
+        shouldRenderBorder: NO
+      }),
+
+      submit: SC.ButtonView.design(SC.AutoResize, {
+        controlSize: SC.HUGE_CONTROL_SIZE,
+        layout: { right: 2, height: 30, centerY: 0, zIndex: 100 },
+        title: 'Add',
+        target: 'Todos.todoController',
+        action: 'addTodo',
+        valueBinding: '.parentView.field.value',
+        isDefaultBinding: '.parentView.field*focused'
+      })
+    }),
     
     todosList: SC.ScrollView.design({
-      layout: { centerX: 0, width: 500, top: 36, bottom: 36 },
+      layout: { centerX: 0, width: 500, top: 72, bottom: 36 },
       contentView: SC.ListView.design({
         contentBinding: SC.Binding.oneWay('Todos.todoController'),
         rowHeight: 36,
