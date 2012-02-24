@@ -3,6 +3,7 @@
 // Copyright: @2012 My Company, Inc.
 // ==========================================================================
 /*globals Todos */
+require('views/todo_item');
 
 // This page describes the main user interface for your application.  
 Todos.mainPage = SC.Page.design({
@@ -11,13 +12,18 @@ Todos.mainPage = SC.Page.design({
   // Add childViews to this pane for views to display immediately on page 
   // load.
   mainPane: SC.MainPane.design({
-    childViews: 'labelView'.w(),
+    childViews: ['completeAll', 'todosList'],
+
+    completeAll: SC.CheckboxView.design({
+      layout: { centerX: 0, width: 400, top: 0, height: 30 },
+      title: 'Mark All as done',
+      valueBinding: 'Todos.completedTodosController.areAllCompleted'
+    }),
     
-    labelView: SC.LabelView.design({
-      layout: { centerX: 0, centerY: 0, width: 200, height: 18 },
-      textAlign: SC.ALIGN_CENTER,
-      tagName: "h1", 
-      value: "Welcome to SproutCore!"
+    todosList: SC.ListView.design({
+      layout: { centerX: 0, width: 400, top: 30, bottom: 0 },
+      contentBinding: SC.Binding.oneWay('Todos.todoController'),
+      exampleView: Todos.TodoItemView
     })
   })
 
