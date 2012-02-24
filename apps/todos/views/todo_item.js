@@ -1,4 +1,4 @@
-Todo.TodoItemView = SC.View.extend({
+Todos.TodoItemView = SC.View.extend({
 
   childViews: ['todo', 'checkbox'],
 
