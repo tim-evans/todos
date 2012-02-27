@@ -20,6 +20,8 @@ do
     build_number=$(sproutcore build-number todos)
     cp -R tmp/build/todos/$tag ./
     cp $tag/static/todos/en/$build_number/index.html $tag/index.html
+    rm Buildfile
+    git checkout Buildfile
 done
 
 rm Buildfile
