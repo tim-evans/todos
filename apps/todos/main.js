@@ -28,7 +28,8 @@ Todos.main = function main() {
     Todos.store.find(SC.Query.local(Todos.Todo, 'isCompleted = true')));
 
   // Focus the new todos item
-  Todos.mainPage.getPath('mainPane.newTodoField.field').becomeFirstResponder();
+  Todos.mainPage.get('field').becomeFirstResponder();
+  //Todos.mainPage.getPath('mainPane.newTodoField.field').becomeFirstResponder();
 
 } ;
 
