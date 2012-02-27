@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# Deploy script for hosting tagged versions of the todos app on github.
+#
+# Simply run ./deploy and it will checkout gh-pages, update it's references
+# and create a directory (and built app) for each tag.
+#
+
+git checkout gh-pages
+git reset --hard origin/master
+
+for tag in $(git tag);
+do
+    git checkout $tag
+    echo "config :all, :required => :sproutcore,
+                       :url_prefix => 'todos/$tag/static'" > Buildfile
+    rm -rf tmp
+    echo "Building todos/$tag..."
+    sc-build todos
+    build_number=$(sproutcore build-number todos)
+    cp -R tmp/build/todos/$tag ./
+    cp $tag/static/todos/en/$build_number/index.html $tag/index.html
+done
+
+rm Buildfile
+git checkout Buildfile
+git checkout gh-pages
+
+for tag in $(git tag);
+do
+    git add $tag
+done;
+
+git commit -m "Host todos on Github"
